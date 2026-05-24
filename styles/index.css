@@ -615,11 +615,12 @@ table.dense-table td {
 }
 
 .hermes-stage {
-  gap: 8px;
+  gap: 10px;
 }
 
 .hermes-stage .compare-panel {
-  gap: 7px;
+  justify-content: space-between;
+  gap: 9px;
   padding: 11px 13px;
 }
 
@@ -628,11 +629,13 @@ table.dense-table td {
 }
 
 .hermes-stage .feature-list {
-  gap: 6px;
+  flex: 1;
+  align-content: space-between;
+  gap: 8px;
 }
 
 .hermes-stage .feature-item {
-  padding: 6px 9px;
+  padding: 8px 10px;
 }
 
 .hermes-title {

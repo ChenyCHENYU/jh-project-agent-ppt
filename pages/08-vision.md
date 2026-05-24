@@ -174,7 +174,7 @@ layout: default
 </div>
 
 <div class="statement-card statement-card-indigo hermes-conclusion mt-0.5 !p-2 text-[10.5px] leading-[1.25rem]">
-<strong>一句话结论：</strong>Hermes 更像多智能体运行时，我们更像企业研发燃料。未来不是“有了 Hermes 就不要多智能体”，而是<strong>不必从零造运行时，但一定要把多智能体接到我们的企业规则之上</strong>。
+<strong>结论：</strong>Hermes 更像多智能体运行时，我们更像企业研发燃料。未来不是“有了 Hermes 就不要多智能体”，而是<strong>不必从零造运行时，但一定要把多智能体接到我们的企业规则之上</strong>。
 </div>
 
 ---
