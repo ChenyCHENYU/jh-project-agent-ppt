@@ -28,7 +28,7 @@ layout: default
   <div class="flex items-center gap-4 my-1">
     <div class="text-center">
       <div class="big-number text-red-400">30%</div>
-      <div class="text-slate-600 text-xs mt-1">裸用 AI</div>
+      <div class="text-slate-600 text-xs mt-1">规模化裸用</div>
     </div>
     <div class="text-slate-700 text-2xl font-bold">→</div>
     <div class="text-center">

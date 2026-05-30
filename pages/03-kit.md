@@ -205,7 +205,8 @@ layout: default
 <div class="compare-stage mt-4 text-sm">
 
 <div class="proof-card">
-  <div class="font-bold text-slate-100 mb-3">典型存量项目 vs wl-mdata 基线</div>
+  <div class="font-bold text-slate-100 mb-1">存量项目抽样 vs wl-mdata 基线</div>
+  <div class="text-slate-500 text-[10px] mb-3">数据来源：wl-ui-public · wl-mdata · 华新安全安防 · 环保项目 · 移动端（3 项目）· 销售 PC 端</div>
   <div class="proof-bars text-[11px]">
     <div v-for="item in [
       { name: 'BaseTable/AGGrid 合规', before: 28, after: 100 },

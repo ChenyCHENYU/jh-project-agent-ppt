@@ -15,50 +15,51 @@ title: 为什么需要这套体系
 layout: default
 ---
 
-# 三个真实场景，都在为同一个问题买单
+# 三个真实场景，AI 都帮不上忙
 
 <div class="grid grid-cols-3 gap-4 mt-4" style="height:calc(100% - 5rem)">
 
 <div class="accent-top-card">
   <div class="accent-card-body">
-    <div class="text-indigo-400 text-xs tracking-widest uppercase mb-3">场景 A · 新功能开发</div>
-    <div class="text-white font-bold text-base mb-3">"帮我生成这个列表页"</div>
+    <div class="text-indigo-400 text-xs tracking-widest uppercase mb-3">场景 A · 批量页面生成</div>
+    <div class="text-white font-bold text-base mb-3">"帮我把这 8 个页面都生成出来"</div>
     <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      AI 给了代码，能跑。<br><br>
-      字段名不对，组件用错，<br>
-      <span class="text-amber-300">布局和其他页面对不上。</span>
+      AI 逐个生成，每个都能跑。<br><br>
+      但 8 个页面的表格写法不统一，字段命名各异，<br>
+      <span class="text-amber-300">布局结构没有一个是对齐的。</span>
     </div>
     <div class="text-xs text-indigo-600 pt-3 mt-2 border-t border-indigo-900/60">
-      返工成本：<strong class="text-indigo-400">2~4 小时</strong>
+      后果：<strong class="text-indigo-400">逐页返工校正，量越大越崩溃</strong>
     </div>
   </div>
 </div>
 
 <div class="accent-top-card-purple">
   <div class="accent-card-body">
-    <div class="text-purple-400 text-xs tracking-widest uppercase mb-3">场景 B · 新成员上手</div>
-    <div class="text-white font-bold text-base mb-3">"BaseTable 怎么用？"</div>
+    <div class="text-purple-400 text-xs tracking-widest uppercase mb-3">场景 B · 视觉风格漂移</div>
+    <div class="text-white font-bold text-base mb-3">"为什么每个项目长得都不一样？"</div>
     <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      AI 给了 Element Plus 标准用法。<br><br>
-      项目用的是封装后的组件，<br>
-      <span class="text-amber-300">跟这个差了整整一层。</span>
+      同一套组件库，5 个项目 5 种样式。<br><br>
+      间距、圆角、配色各写各的，<br>
+      <span class="text-amber-300">AI 不知道你的设计令牌是什么。</span>
     </div>
     <div class="text-xs text-purple-600 pt-3 mt-2 border-t border-purple-900/60">
-      上手成本：<strong class="text-purple-400">多花 1~2 天</strong>
+      后果：<strong class="text-purple-400">视觉债务持续累积，越晚治成本越高</strong>
     </div>
   </div>
 </div>
 
 <div class="accent-top-card-red">
   <div class="accent-card-body">
-    <div class="text-red-400 text-xs tracking-widest uppercase mb-3">场景 C · 前后端对接</div>
-    <div class="text-white font-bold text-base mb-3">"接口字段对一下"</div>
+    <div class="text-red-400 text-xs tracking-widest uppercase mb-3">场景 C · 前后端契约缺失</div>
+    <div class="text-white font-bold text-base mb-3">"接口字段又对不上了"</div>
     <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      口头说好的字段，联调才发现理解不同。<br><br>
-      改了三轮，<span class="text-amber-300">沟通成本远超开发本身。</span>
+      前端 AI 生成了页面，后端 AI 生成了接口。<br><br>
+      两边各猜各的字段名和类型，<br>
+      <span class="text-amber-300">联调时才发现完全对不上。</span>
     </div>
     <div class="text-xs text-red-600 pt-3 mt-2 border-t border-red-900/60">
-      联调成本：<strong class="text-red-400">4~8 小时</strong>
+      后果：<strong class="text-red-400">AI 越快，返工越贵——因为没有共同契约</strong>
     </div>
   </div>
 </div>
@@ -95,9 +96,9 @@ layout: default
   <div class="text-slate-400 text-sm space-y-1.5 leading-relaxed">
     <div>BaseTable / AGGrid 封装写法</div>
     <div>defineColumns / renderOps 约定</div>
-    <div>jh-* 私有组件库规范</div>
-    <div>14 条团队编码规范</div>
-    <div>菜单 / 字典 / 权限接口约定</div>
+    <div>设计令牌 / 间距圆角配色体系</div>
+    <div>14 条前端编码规范 + 后端分层规范</div>
+    <div>菜单 / 字典 / 权限 / api.md 契约</div>
   </div>
 </div>
 

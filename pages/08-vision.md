@@ -1,12 +1,12 @@
 ---
 layout: section
-title: 长期愿景
+title: 远期愿景与行动计划
 ---
 
 <div class="h-full flex flex-col justify-center">
   <div class="text-sm text-violet-400 tracking-widest mb-3 uppercase">Chapter 08</div>
   <h2 class="text-4xl font-black mb-4">
-    <span class="gradient-text">长期愿景</span>
+    <span class="gradient-text">远期愿景与行动计划</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">全链路闭环 · 多智能体协同 · L7 自演化</p>
   <p class="text-slate-400">从研发工具到产品研发测试一体化智能体</p>
@@ -252,7 +252,7 @@ layout: default
 layout: default
 ---
 
-# 听完之后，先做这一件事
+# 行动计划：三步开始落地
 
 <div class="grid grid-cols-2 gap-4 mt-4" style="height:calc(100% - 5.5rem)">
 
