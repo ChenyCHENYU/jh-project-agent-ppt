@@ -4,7 +4,7 @@ title: 挑战与突破
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-red-400 tracking-widest mb-3 uppercase">Chapter 09</div>
+  <div class="text-sm text-red-400 tracking-widest mb-3 uppercase">13 · 挑战与边界</div>
   <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text-warm">挑战与突破</span>
   </h2>

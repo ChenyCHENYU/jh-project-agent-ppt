@@ -4,13 +4,13 @@
 
 // ── L5 真实执行链路（映射到 skills/ 目录结构） ──
 export const pipelineSteps = [
-  { num: '01', skill: 'prototype-scan', label: '原型/口述 → 页面清单', product: '→ page-spec JSON + 页面总表', variant: 'cyan' },
-  { num: '02', skill: 'api-contract', label: '页面清单 → 接口契约', product: '→ api.md (页面级契约)', variant: 'indigo' },
+  { num: '01', skill: 'prototype-scan / spec-doc-parse', label: '原型线/规范线 → 页面清单', product: '→ page-spec JSON + 页面总表', variant: 'cyan' },
+  { num: '02', skill: 'api-contract', label: '页面清单 → 接口契约', product: '→ src/views/**/api.md', variant: 'indigo' },
   { num: '03', skill: 'page-codegen', label: '契约+清单 → 三文件产出', product: '→ index.vue + data.ts + index.scss', variant: 'purple' },
-  { num: '04', skill: 'validate-page', label: '校验产出完整性', product: '→ AGGrid/cid/api.md 通过', variant: 'cyan' },
+  { num: '04', skill: 'page-codegen(内置自检)', label: '生成后强制校验', product: '→ R1-R12 AST + S1-S5 page-spec', variant: 'cyan' },
   { num: '05', skill: 'convention-audit', label: '14 条规范审计', product: '→ reports/规范审查报告.md', variant: 'indigo' },
-  { num: '06', skill: 'code-fix', label: '自动修复偏差', product: '→ 按审计报告逐项修复', variant: 'green' },
-  { num: '07', skill: 'doctor-ui', label: 'UI 接入诊断', product: '→ I001~I004 + R001~R028', variant: 'cyan' },
+  { num: '06', skill: 'code-fix', label: '自动修复 → 强制复扫', product: '→ 修后自动 validate', variant: 'green' },
+  { num: '07', skill: 'doctor-ui', label: 'UI 接入诊断', product: '→ I001~I005 + R001~R037', variant: 'cyan' },
   { num: '08', skill: 'menu-sync', label: '菜单注册 (MCP)', product: '→ SYS_MENU_INFO.md', variant: 'amber' },
   { num: '09', skill: 'dict-sync', label: '字典同步 (MCP)', product: '→ 线上字典对齐', variant: 'amber' },
   { num: '10', skill: 'permission-sync', label: '权限+角色同步', product: '→ v-permission + 角色授权', variant: 'green' },
@@ -20,7 +20,7 @@ export const pipelineSteps = [
 export const installFrames = [
   { type: 'cmd', text: '$ npx @agile-team/wl-skills-kit' },
   { type: 'out', text: '' },
-  { type: 'ok',  text: '🚀 @agile-team/wl-skills-kit v2.10.0 — AI 工程体系初始化' },
+  { type: 'ok',  text: '🚀 @agile-team/wl-skills-kit v2.11.1 — AI 工程体系初始化' },
   { type: 'out', text: '' },
   { type: 'ok',  text: '📦 步骤 1/5 — 编辑器规范文件' },
   { type: 'ok',  text: '  ✓ .github/copilot-instructions.md      (Copilot 主入口)' },

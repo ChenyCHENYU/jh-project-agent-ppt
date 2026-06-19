@@ -90,14 +90,14 @@
 
 /* ── 渐变文字标题 ── */
 .gradient-text {
-  background: linear-gradient(135deg, #a5b4fc, #818cf8, #6366f1, #22d3ee);
+  background: linear-gradient(135deg, #eaf2fb, #bfdbfe, #93c5fd, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b, #ef4444);
+  background: linear-gradient(135deg, #fde68a, #fcd34d, #f59e0b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -375,7 +375,7 @@
 .cover-presenter-divider {
   width: 1px;
   margin: 8px 0;
-  background: linear-gradient(180deg, rgba(129, 140, 248, 0), rgba(129, 140, 248, 0.36), rgba(34, 211, 238, 0.28), rgba(34, 211, 238, 0));
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.28), rgba(148, 163, 184, 0));
 }
 
 .cover-corner-note {
@@ -914,8 +914,8 @@ table.timeline-table td {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #818cf8, #6366f1, #22d3ee);
-  box-shadow: 0 0 16px rgba(129,140,248,0.35), 0 0 4px rgba(99,102,241,0.5);
+  background: linear-gradient(135deg, #93c5fd, #60a5fa);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.18);
 }
 
 @media (max-width: 900px) {
@@ -1800,40 +1800,206 @@ button[title="Show slide overview"] {
   justify-content: center;
 }
 
-.toc-row {
+/* ── Agenda 时间轴式目录（精致版） ── */
+.agenda {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 10px;
+}
+.agenda-head {
+  margin-bottom: 14px;
+  padding-left: 20px;
+}
+.agenda-spine {
+  position: absolute;
+  left: 20px;
+  top: 5%;
+  bottom: 5%;
+  width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(180deg, rgba(96,165,250,0) 0%, rgba(96,165,250,0.4) 10%, rgba(96,165,250,0.4) 90%, rgba(96,165,250,0) 100%);
+}
+.agenda-item {
+  position: relative;
   display: grid;
-  grid-template-columns: 36px 1fr 2fr;
-  gap: 10px;
+  grid-template-columns: 20px 56px 1fr;
+  gap: 13px;
   align-items: center;
-  padding: 7px 14px;
+  padding: 7px 0;
+}
+.agenda-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin: 0 auto;
+  background: #0b1222;
+  border: 2px solid rgba(96,165,250,0.5);
+  box-shadow: 0 0 0 4px rgba(11,18,34,1), 0 0 0 5px rgba(96,165,250,0.08);
+  z-index: 1;
+}
+.agenda-node--accent {
+  background: #60a5fa;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(11,18,34,1), 0 0 12px rgba(96,165,250,0.5), 0 0 0 5px rgba(96,165,250,0.18);
+}
+.agenda-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.agenda-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+.agenda-sub {
+  font-size: 11.5px;
+  color: #64748b;
+  margin-top: 1px;
+  line-height: 1.45;
+}
+/* 四包焦点卡片 */
+.agenda-focus {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px 56px 1fr;
+  gap: 13px;
+  align-items: stretch;
+  padding: 11px 0;
+}
+.agenda-focus-card {
+  grid-column: 2 / -1;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(96,165,250,0.3);
+  background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(147,197,253,0.04));
+  box-shadow: 0 12px 30px rgba(5,10,28,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.agenda-focus-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.agenda-focus-badge {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fcd34d;
+  background: rgba(252,211,77,0.12);
+  border: 1px solid rgba(252,211,77,0.3);
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.agenda-focus-sub {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin: 3px 0 9px;
+}
+.agenda-focus-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.agenda-chip {
+  text-align: center;
+  padding: 7px 4px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), inset 0 -1px 0 rgba(0,0,0,0.08);
-  transition: border-color 0.2s, background 0.2s;
+  background: rgba(11,18,34,0.55);
+  border: 1px solid rgba(148,163,184,0.14);
+}
+.agenda-chip-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+.agenda-chip-desc {
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 2px;
 }
 
-.toc-row:hover {
-  border-color: rgba(255,255,255,0.12);
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+/* ── 两栏：左内容 + 右源追溯，左栏撑满高度 ── */
+.split-trace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 256px;
+  gap: 18px;
+  height: calc(100% - 3.4rem);
+  align-items: stretch;
+}
+.split-trace > .split-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 11px;
+  min-width: 0;
 }
 
-.toc-row--amber {
-  background: linear-gradient(180deg, rgba(251,146,60,0.06), rgba(251,146,60,0.02));
-  border-color: rgba(251,146,60,0.12);
+/* ── 新增动效基建（分享增强） ── */
+
+/* api.md 契约卡片脉冲（枢纽感） */
+.api-pulse {
+  animation: apiPulse 2.4s ease-in-out infinite;
+}
+@keyframes apiPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(96,165,250,0.0), 0 4px 18px rgba(0,0,0,0.25); border-color: rgba(96,165,250,0.2); }
+  50%      { box-shadow: 0 0 24px 2px rgba(96,165,250,0.28), 0 4px 18px rgba(0,0,0,0.25); border-color: rgba(96,165,250,0.55); }
 }
 
-.toc-row--cyan {
-  background: linear-gradient(180deg, rgba(34,211,238,0.06), rgba(34,211,238,0.02));
-  border-color: rgba(34,211,238,0.12);
+/* 对比条从 0 增长动画（量化页，slide 出现自动播放） */
+.proof-bar-fill-grow {
+  animation: barGrow 1.1s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes barGrow {
+  from { width: 0 !important; }
+  to   { width: var(--bar-w, 100%); }
 }
 
-.toc-row--green {
-  background: linear-gradient(180deg, rgba(74,222,128,0.06), rgba(74,222,128,0.02));
-  border-color: rgba(74,222,128,0.12);
+/* section 标题入场（已有 fadeInUp 复用） */
+.section-enter h2 { animation: fadeInUp 0.6s ease-out both; }
+.section-enter .hero-kicker, .section-enter .tracking-widest { animation: fadeInUp 0.5s ease-out both; }
+
+/* 闭环传递链流光箭头 */
+.chain-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(96,165,250,0.35);
+  font-weight: 800;
+  font-size: 1.3rem;
+  transition: color 0.4s, transform 0.4s;
+}
+.chain-arrow--on {
+  color: #60a5fa;
+  animation: arrowGlow 1.6s ease-in-out infinite;
+}
+@keyframes arrowGlow {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50%      { opacity: 1; transform: translateX(3px); }
 }
 
-.toc-row--purple {
-  background: linear-gradient(180deg, rgba(167,139,250,0.06), rgba(167,139,250,0.02));
-  border-color: rgba(167,139,250,0.12);
+/* 全景页能力卡重点强调 */
+.cap-focus {
+  transform: scale(1.04);
+  border-color: rgba(252,211,77,0.5) !important;
+  box-shadow: 0 0 28px rgba(252,211,77,0.18) !important;
 }
+
+/* 源面板 hover 高亮（已有 strace，增强交互感） */
+.strace:hover {
+  border-color: rgba(96,165,250,0.4);
+}
+
+/* v-click 入场：让任意块淡入上移 */
+.vc-in { transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
+.slidev-vclick-target.vc-in.hidden,
+.slidev-vclick-target.vc-in.prev { opacity: 0; transform: translateY(10px); }

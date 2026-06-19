@@ -25,17 +25,17 @@ layout: default
       <div class="panel-soft-amber !py-4">
         <div class="text-lg mb-1">📋</div>
         <div class="text-amber-300 text-xs font-bold">design</div>
-        <div class="text-slate-500 text-[10px]">7 Skill · 176 验证</div>
+        <div class="text-slate-500 text-[10px]">8 Skill · 214 验证</div>
       </div>
       <div class="panel-soft-indigo !py-4">
         <div class="text-lg mb-1">⚡</div>
         <div class="text-indigo-300 text-xs font-bold">kit</div>
-        <div class="text-slate-500 text-[10px]">10 Skill · 17 MCP</div>
+        <div class="text-slate-500 text-[10px]">11 Skill · 17 MCP</div>
       </div>
       <div class="panel-soft-green !py-4">
         <div class="text-lg mb-1">🗄️</div>
         <div class="text-green-300 text-xs font-bold">bd</div>
-        <div class="text-slate-500 text-[10px]">9 Skill · 14 规范</div>
+        <div class="text-slate-500 text-[10px]">9 Skill · 17 规范</div>
       </div>
       <div class="panel-soft-cyan !py-4">
         <div class="text-lg mb-1">✅</div>

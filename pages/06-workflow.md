@@ -4,12 +4,12 @@ title: AI 工作流实战
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-yellow-400 tracking-widest mb-3 uppercase">Chapter 07</div>
+  <div class="text-sm text-yellow-400 tracking-widest mb-3 uppercase">09 · 工作流实战</div>
   <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text">AI 工作流实战</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">从人工串联 Skills 到 AI 自动化流水线</p>
-  <p class="text-slate-400">L5 Pipeline 试运行 · L6 Multi-Agent 规划</p>
+  <p class="text-slate-400">L5 Pipeline 试运行 · 真实业务页面连续跑通</p>
 </div>
 
 ---
@@ -63,13 +63,13 @@ clicks: 11
 import FlowPipeline from '../components/FlowPipeline.vue'
 
 const timelineSteps = [
-  { num: '01', skill: 'prototype-scan', label: '原型/口述 → 页面清单', product: '→ reports/PROTOTYPE_SCAN_*.md', variant: 'cyan' },
-  { num: '02', skill: 'api-contract', label: '页面清单 → 接口契约', product: '→ api.md', variant: 'indigo' },
+  { num: '01', skill: 'prototype-scan / spec-doc-parse', label: '原型线/规范线 → 页面清单', product: '→ reports/PROTOTYPE_SCAN_*.md', variant: 'cyan' },
+  { num: '02', skill: 'api-contract', label: '页面清单 → 接口契约', product: '→ src/views/**/api.md', variant: 'indigo' },
   { num: '03', skill: 'page-codegen', label: '契约+清单 → 三文件产出', product: '→ index.vue + data.ts + index.scss', variant: 'purple' },
-  { num: '04', skill: 'validate-page', label: '校验产出完整性', product: '→ AGGrid/cid/api.md 通过', variant: 'cyan' },
-  { num: '05', skill: 'convention-audit', label: '14 条规范审计', product: '→ reports/AUDIT_AI_*.md', variant: 'indigo' },
-  { num: '06', skill: 'code-fix', label: '自动修复偏差', product: '→ 按审计报告逐项修复', variant: 'green' },
-  { num: '07', skill: 'doctor-ui', label: 'UI 接入诊断', product: '→ I001~I004 + R001~R018', variant: 'cyan' },
+  { num: '04', skill: 'page-codegen(内置自检)', label: '生成后强制校验', product: '→ R1-R12 AST + S1-S5 page-spec', variant: 'cyan' },
+  { num: '05', skill: 'convention-audit', label: '14 条规范审计', product: '→ reports/规范审查报告.md', variant: 'indigo' },
+  { num: '06', skill: 'code-fix', label: '自动修复 → 强制复扫', product: '→ 修后自动 validate', variant: 'green' },
+  { num: '07', skill: 'doctor-ui', label: 'UI 接入诊断', product: '→ I001~I005 + R001~R037', variant: 'cyan' },
   { num: '08', skill: 'menu-sync', label: '菜单注册 (MCP)', product: '→ SYS_MENU_INFO.md', variant: 'amber' },
   { num: '09', skill: 'dict-sync', label: '字典同步 (MCP)', product: '→ 线上字典对齐', variant: 'amber' },
   { num: '10', skill: 'permission-sync', label: '权限+角色同步', product: '→ v-permission + 角色授权', variant: 'green' },
@@ -135,134 +135,5 @@ layout: default
 </div>
 
 <div class="statement-card statement-card-indigo mt-4 text-sm">
-<strong>L5 Pipeline 阶段一目标：</strong> 完整走通 3 个以上真实业务页面的全链路（① → ⑩），无需 AI 二次补救。这是进入 L6 的前提。
-</div>
-
----
-layout: default
----
-
-# 节点决策记录：把隐性判断变成显性规则
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-<div class="statement-card statement-card-indigo mb-4 text-sm">
-<strong>一个关键洞察</strong><br>
-L5 手动跑 Pipeline 时，你会做很多“顺手就判断了”的动作。<br>
-这些判断不是经验噪音，而是后面 L6 Agent 必须显式学习的路由规则。
-</div>
-
-<div class="space-y-2 text-sm">
-<div class="arch-card-orange">
-  <div class="text-orange-300 font-bold">类型 1：结构识别</div>
-  <div class="text-slate-400 mt-1">prototype-scan 输出了一个叫 <code>AddModal</code> 的页面，你一眼判断这是弹窗，不该继续走 page-codegen 主流程。</div>
-</div>
-<div class="arch-card-orange mt-2">
-  <div class="text-orange-300 font-bold">类型 2：例外豁免</div>
-  <div class="text-slate-400 mt-1">convention-audit 报了一条警告，但你知道这是项目阶段性例外，所以临时跳过，不当作通用错误处理。</div>
-</div>
-<div class="arch-card-orange mt-2">
-  <div class="text-orange-300 font-bold">类型 3：格式转换</div>
-  <div class="text-slate-400 mt-1">某一步输出和下游期望格式不一致，你手动转了一下，这其实就是待固化的数据转换规则。</div>
-</div>
-</div>
-
-</div>
-
-<div>
-<div class="statement-card statement-card-green mb-4 text-sm">
-<strong>实践方法：记规则，不记故事</strong><br>
-在 L5 跑通阶段，开一个 <code>_pipeline-notes.md</code>。<br>
-每次手动调整就记一条，格式：
-</div>
-
-```markdown
-# Pipeline 决策记录
-
-## prototype-scan 判断规则
-- 输出名含 Modal/Dialog 
-  → 标记为 dialog-type，不走 page-codegen 主流程
-
-## convention-audit 例外规则  
-- xxx 模块的 BaseTable 使用旧版 API
-  → 暂时豁免，等升级完成后移除例外
-
-## 数据格式转换规则
-- api-contract 输出的字段类型使用 Java 类型
-  → 传给 page-codegen 前需转换为 TS 类型
-```
-
-<div class="statement-card mt-3 text-sm">
-<strong>这些笔记 → 会直接变成 L6 Orchestrator 的路由规则</strong><br>
-从“人脑里知道怎么判断”，变成“系统里写明如何判断”。
-</div>
-
-</div>
-
-</div>
-
----
-layout: default
----
-
-# L6 Multi-Agent：把职责拆开，而不是把系统搞复杂
-
-<div class="mt-2">
-
-<div class="statement-card statement-card-indigo mb-3 text-sm">
-<strong>为什么要拆成多 Agent？</strong>因为需求解析、代码生成、校验审计、系统同步的输入输出和风险等级都不同。拆开后，才能分别复用、重跑、门控。
-</div>
-
-<div class="panel-soft-indigo mx-auto max-w-md mb-3 text-center">
-  <div class="font-bold text-indigo-200 text-sm">🎯 Orchestrator（调度层）</div>
-  <div class="text-xs text-slate-400 mt-0.5">接收需求 · 路由 Agent · 管理顺序 · 汇总产物</div>
-</div>
-
-<div class="flex justify-center mb-2 text-slate-600 text-xs tracking-widest">▼ 分发给各专职 Agent ▼</div>
-
-<div class="grid grid-cols-5 gap-2 text-xs mb-3">
-  <div v-click class="panel-soft-indigo text-center !p-2">
-    <div class="text-base mb-0.5">📋</div>
-    <div class="font-bold text-blue-300 text-[11px]">需求解析</div>
-    <div class="micro-note mt-0.5">prototype-scan<br>business-doc</div>
-  </div>
-  <div v-click class="panel-soft-purple text-center !p-2">
-    <div class="text-base mb-0.5">⚡</div>
-    <div class="font-bold text-violet-300 text-[11px]">代码生成</div>
-    <div class="micro-note mt-0.5">api-contract<br>page-codegen</div>
-  </div>
-  <div v-click class="panel-soft-cyan text-center !p-2">
-    <div class="text-base mb-0.5">✅</div>
-    <div class="font-bold text-cyan-300 text-[11px]">校验</div>
-    <div class="micro-note mt-0.5">validate-page<br>doctor-ui</div>
-  </div>
-  <div v-click class="panel-soft-green text-center !p-2">
-    <div class="text-base mb-0.5">🔍</div>
-    <div class="font-bold text-green-300 text-[11px]">审计</div>
-    <div class="micro-note mt-0.5">convention-audit<br>code-fix</div>
-  </div>
-  <div v-click class="panel-soft-amber text-center !p-2">
-    <div class="text-base mb-0.5">🔄</div>
-    <div class="font-bold text-amber-300 text-[11px]">同步</div>
-    <div class="micro-note mt-0.5">menu/dict/perm</div>
-    <div class="micro-note text-amber-400 mt-0.5">⚠️ 人工确认</div>
-  </div>
-</div>
-
-<div class="grid grid-cols-3 gap-3 text-xs">
-  <div class="statement-card statement-card-indigo !p-3">
-    <strong class="text-indigo-300">并行执行</strong><br>
-    <span class="text-slate-400">前四个 Agent 可流水线并发，Orchestrator 管理依赖关系</span>
-  </div>
-  <div class="statement-card !p-3">
-    <strong class="text-yellow-300">产物一致性</strong><br>
-    <span class="text-slate-400">每步输出作为下步输入，链路可中断重跑，不从头开始</span>
-  </div>
-  <div class="statement-card statement-card-green !p-3">
-    <strong class="text-green-300">人工门控</strong><br>
-    <span class="text-slate-400">同步 Agent 写系统数据前必须等待 diff 预览 + 人工确认</span>
-  </div>
-</div>
-
+<strong>L5 Pipeline 目标：</strong> 完整走通 3 个以上真实业务页面的全链路（① → ⑩），无需 AI 二次补救。
 </div>

@@ -1,10 +1,10 @@
 ---
 layout: section
-title: 为什么需要这套体系
+title: 为什么需要标准化
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-xs text-indigo-400 tracking-widest uppercase mb-4">Chapter 01 · 问题篇</div>
+  <div class="text-xs text-indigo-400 tracking-widest uppercase mb-4">01 · 为什么需要标准化</div>
   <h2 class="text-5xl font-black mb-5 leading-tight">
     你的 AI<br><span class="gradient-text">是个聪明的陌生人</span>
   </h2>
@@ -15,62 +15,7 @@ title: 为什么需要这套体系
 layout: default
 ---
 
-# 三个真实场景，AI 都帮不上忙
-
-<div class="grid grid-cols-3 gap-4 mt-4" style="height:calc(100% - 5rem)">
-
-<div class="accent-top-card">
-  <div class="accent-card-body">
-    <div class="text-indigo-400 text-xs tracking-widest uppercase mb-3">场景 A · 批量页面生成</div>
-    <div class="text-white font-bold text-base mb-3">"帮我把这 8 个页面都生成出来"</div>
-    <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      AI 逐个生成，每个都能跑。<br><br>
-      但 8 个页面的表格写法不统一，字段命名各异，<br>
-      <span class="text-amber-300">布局结构没有一个是对齐的。</span>
-    </div>
-    <div class="text-xs text-indigo-600 pt-3 mt-2 border-t border-indigo-900/60">
-      后果：<strong class="text-indigo-400">逐页返工校正，量越大越崩溃</strong>
-    </div>
-  </div>
-</div>
-
-<div class="accent-top-card-purple">
-  <div class="accent-card-body">
-    <div class="text-purple-400 text-xs tracking-widest uppercase mb-3">场景 B · 视觉风格漂移</div>
-    <div class="text-white font-bold text-base mb-3">"为什么每个项目长得都不一样？"</div>
-    <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      同一套组件库，5 个项目 5 种样式。<br><br>
-      间距、圆角、配色各写各的，<br>
-      <span class="text-amber-300">AI 不知道你的设计令牌是什么。</span>
-    </div>
-    <div class="text-xs text-purple-600 pt-3 mt-2 border-t border-purple-900/60">
-      后果：<strong class="text-purple-400">视觉债务持续累积，越晚治成本越高</strong>
-    </div>
-  </div>
-</div>
-
-<div class="accent-top-card-red">
-  <div class="accent-card-body">
-    <div class="text-red-400 text-xs tracking-widest uppercase mb-3">场景 C · 前后端契约缺失</div>
-    <div class="text-white font-bold text-base mb-3">"接口字段又对不上了"</div>
-    <div class="text-slate-400 text-sm leading-relaxed flex-1">
-      前端 AI 生成了页面，后端 AI 生成了接口。<br><br>
-      两边各猜各的字段名和类型，<br>
-      <span class="text-amber-300">联调时才发现完全对不上。</span>
-    </div>
-    <div class="text-xs text-red-600 pt-3 mt-2 border-t border-red-900/60">
-      后果：<strong class="text-red-400">AI 越快，返工越贵——因为没有共同契约</strong>
-    </div>
-  </div>
-</div>
-
-</div>
-
----
-layout: default
----
-
-# 根因不是 AI 笨，而是它看不见你的项目
+# 根因：AI 看不见你的项目
 
 <div class="flex items-center gap-6 mt-5" style="height:calc(100% - 5.5rem)">
 
@@ -94,10 +39,9 @@ layout: default
   <div class="text-4xl">🏢</div>
   <div class="text-xs text-indigo-400 tracking-widest uppercase">你的项目需要的（私有规范）</div>
   <div class="text-slate-400 text-sm space-y-1.5 leading-relaxed">
-    <div>BaseTable / AGGrid 封装写法</div>
-    <div>defineColumns / renderOps 约定</div>
+    <div>BaseTable / defineColumns 约定</div>
     <div>设计令牌 / 间距圆角配色体系</div>
-    <div>14 条前端编码规范 + 后端分层规范</div>
+    <div>14 条前端 + 后端分层规范</div>
     <div>菜单 / 字典 / 权限 / api.md 契约</div>
   </div>
 </div>
@@ -105,64 +49,39 @@ layout: default
 </div>
 
 <div class="panel-soft-amber mt-3 text-sm text-center">
-  AI 不是<span class="text-amber-400 font-bold">能力不足</span>，而是缺少<span class="text-white font-bold">项目上下文</span>。它不会天然知道你的组件封装、接口约定和团队规则。
+  AI 不是<span class="text-amber-400 font-bold">能力不足</span>，而是缺少<span class="text-white font-bold">项目上下文</span>——它不会天然知道你的组件封装、接口约定和团队规则。
 </div>
 
 ---
 layout: default
 ---
 
-# 真正的解法：把团队经验编码成 AI 看得见的规范
+<h1 class="tight-title">解法：把团队经验编码成 AI 看得见的标准</h1>
 
-<div class="grid grid-cols-2 gap-6 mt-4" style="height:calc(100% - 5rem)">
+<div class="page-fit-sm grid-tight-2 text-[12px] leading-5 mt-2">
 
 <div>
-  <div class="text-xs text-slate-500 uppercase tracking-widest mb-3">Before — 依赖人传递，无法规模化</div>
-  <div class="space-y-2">
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)">
-      <span class="text-red-500 mt-0.5 shrink-0">✗</span>
-      <span class="text-slate-400">每次对话都要重新解释项目背景</span>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)">
-      <span class="text-red-500 mt-0.5 shrink-0">✗</span>
-      <span class="text-slate-400">规范在人脑中，新人靠问靠翻代码</span>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)">
-      <span class="text-red-500 mt-0.5 shrink-0">✗</span>
-      <span class="text-slate-400">接口字段靠口头对齐，联调反复返工</span>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)">
-      <span class="text-red-500 mt-0.5 shrink-0">✗</span>
-      <span class="text-slate-400">AI 每次都从零猜，质量随机</span>
-    </div>
+  <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">Before — 依赖人传递，无法规模化</div>
+  <div class="space-y-1.5">
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)"><span class="text-red-500">✗</span> <span class="text-slate-400">每次对话重新解释项目背景</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)"><span class="text-red-500">✗</span> <span class="text-slate-400">规范在人脑里，新人靠问靠翻代码</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)"><span class="text-red-500">✗</span> <span class="text-slate-400">接口字段靠口头对齐，联调反复返工</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15)"><span class="text-red-500">✗</span> <span class="text-slate-400">AI 每次从零猜，质量随机</span></div>
   </div>
 </div>
 
 <div>
-  <div class="text-xs text-slate-500 uppercase tracking-widest mb-3">After — 规范编码化，AI 持续感知</div>
-  <div class="space-y-2">
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)">
-      <span class="text-green-500 mt-0.5 shrink-0">✓</span>
-      <div class="text-slate-300 flex-1">规范写成文件，AI 自动感知 <span class="level-tag l0 text-xs ml-1">L0</span></div>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)">
-      <span class="text-green-500 mt-0.5 shrink-0">✓</span>
-      <div class="text-slate-300 flex-1">SKILL.md 沉淀最佳实践，一次书写复用所有项目 <span class="level-tag l2 text-xs ml-1">L2</span></div>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)">
-      <span class="text-green-500 mt-0.5 shrink-0">✓</span>
-      <div class="text-slate-300 flex-1">api.md 成唯一契约，前后端共消费无歧义 <span class="level-tag l3 text-xs ml-1">L3</span></div>
-    </div>
-    <div class="flex items-start gap-3 px-4 py-3 rounded-xl text-sm" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)">
-      <span class="text-green-500 mt-0.5 shrink-0">✓</span>
-      <div class="text-slate-300 flex-1">Pipeline 自动跑完链路，人只做关键节点审核 <span class="level-tag l5 text-xs ml-1">L5</span></div>
-    </div>
+  <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">After — 规范编码化，AI 持续感知</div>
+  <div class="space-y-1.5">
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)"><span class="text-green-500">✓</span> <span class="text-slate-300">规范写成文件，AI 自动感知项目上下文</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)"><span class="text-green-500">✓</span> <span class="text-slate-300">SKILL.md 沉淀最佳实践，一次书写全项目复用</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)"><span class="text-green-500">✓</span> <span class="text-slate-300">api.md 成唯一契约，前后端无歧义</span></div>
+    <div class="px-3 py-2 rounded-xl text-[11px]" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15)"><span class="text-green-500">✓</span> <span class="text-slate-300">Pipeline 自动跑链路，人只做关键审核</span></div>
   </div>
 </div>
 
 </div>
 
-<div class="mt-3 py-2.5 px-5 rounded-xl text-sm text-center" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2)">
-  <strong class="text-indigo-300">核心思路：</strong>不是让开发者退场，而是把团队积累的经验<strong class="text-white">编码化</strong>，让 AI 从“猜”变成“按规则工作”。
+<div class="mt-2 py-2.5 px-5 rounded-xl text-[13px] text-center" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2)">
+  <strong class="text-indigo-300">这就是"标准化"：</strong>不是让开发者退场，而是把团队经验<strong class="text-white">编码化</strong>，让 AI 从"猜"变成"按规则工作"。
 </div>
-
