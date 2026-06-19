@@ -7,3 +7,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# build / export artifacts
+png-slides/
+diag-page1/
+*.bak
+*.pdf

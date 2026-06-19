@@ -7,6 +7,17 @@
   background: linear-gradient(145deg, #080e1e 0%, #0d1433 40%, #130d2e 70%, #0a1220 100%);
   color: #dde4f0;
   font-family: 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── PDF 导出修复：强制保留所有打印色，防止深色主题导出白屏 ── */
+@media print {
+  .slidev-layout,
+  .slidev-layout * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }
 
 .slidev-layout::before {
@@ -20,11 +31,30 @@
     radial-gradient(circle at 50% 100%, rgba(168,85,247,0.06), transparent 26%);
 }
 
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgba(129,140,248,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129,140,248,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+}
+
 .slidev-layout h1 {
   letter-spacing: -0.02em;
   margin-bottom: 0.8rem;
 }
 
+.slidev-layout.default h1 {
+  font-size: 1.65rem;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
 .slidev-layout p,
 .slidev-layout li,
 .slidev-layout td,
@@ -53,16 +83,21 @@
   background: linear-gradient(145deg, #060b1a 0%, #0e0b2a 35%, #0c1535 65%, #08101e 100%);
 }
 
+.slidev-layout.cover::after,
+.slidev-layout.intro::after {
+  opacity: 0.15;
+}
+
 /* ── 渐变文字标题 ── */
 .gradient-text {
-  background: linear-gradient(90deg, #818cf8, #22d3ee);
+  background: linear-gradient(135deg, #a5b4fc, #818cf8, #6366f1, #22d3ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #ef4444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -74,13 +109,13 @@
   border: 1px solid rgba(99, 102, 241, 0.18);
   border-radius: 14px;
   padding: 12px 16px;
-  box-shadow: 0 10px 28px rgba(5, 10, 28, 0.18), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 28px rgba(5, 10, 28, 0.18), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.15);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .arch-card:hover {
   border-color: rgba(99, 102, 241, 0.36);
-  box-shadow: 0 14px 32px rgba(5, 10, 28, 0.26), inset 0 1px 0 rgba(255,255,255,0.06);
+  box-shadow: 0 14px 32px rgba(5, 10, 28, 0.26), inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.15);
 }
 
 .arch-card-cyan {
@@ -180,7 +215,7 @@
 }
 
 .accent-top-card::before {
-  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  background: linear-gradient(135deg, #6366f1, #818cf8, #22d3ee);
 }
 
 .accent-top-card-purple {
@@ -189,7 +224,7 @@
 }
 
 .accent-top-card-purple::before {
-  background: linear-gradient(90deg, #8b5cf6, #c084fc);
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6, #c084fc);
 }
 
 .accent-top-card-red {
@@ -198,7 +233,7 @@
 }
 
 .accent-top-card-red::before {
-  background: linear-gradient(90deg, #ef4444, #f59e0b);
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
 }
 
 .accent-card-body {
@@ -306,7 +341,7 @@
   border-radius: 18px;
   border: 1px solid rgba(129, 140, 248, 0.2);
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.78), rgba(30, 41, 59, 0.42));
-  box-shadow: 0 16px 34px rgba(3, 7, 18, 0.24), inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: 0 16px 34px rgba(3, 7, 18, 0.24), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -1px 0 rgba(0,0,0,0.15);
   backdrop-filter: blur(8px);
   max-width: 720px;
 }
@@ -451,9 +486,9 @@
 .quote-panel {
   border-radius: 18px;
   padding: 16px 18px;
-  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15));
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(129,140,248,0.08), rgba(168,85,247,0.12));
   border: 1px solid rgba(168,85,247,0.18);
-  box-shadow: 0 14px 32px rgba(5, 10, 28, 0.22), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 14px 32px rgba(5, 10, 28, 0.22), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.12);
 }
 
 .step-card {
@@ -513,15 +548,15 @@ table.dense-table td {
 }
 
 .tight-title {
-  font-size: 2.55rem;
-  line-height: 1.05;
+  font-size: 1.85rem;
+    line-height: 1.15;
   letter-spacing: -0.03em;
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.35rem;
 }
 
 .tight-title-sub {
-  margin-left: 0.45rem;
-  font-size: 0.42em;
+  margin-left: 0.35rem;
+    font-size: 0.46em;
   font-weight: 400;
   color: #94a3b8;
   letter-spacing: 0;
@@ -818,7 +853,7 @@ table.timeline-table td {
   padding: 12px 16px;
   border-radius: 16px;
   margin: 8px 0;
-  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .highlight-box-yellow {
@@ -827,7 +862,7 @@ table.timeline-table td {
   padding: 12px 16px;
   border-radius: 16px;
   margin: 8px 0;
-  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .highlight-box-red {
@@ -836,7 +871,7 @@ table.timeline-table td {
   padding: 12px 16px;
   border-radius: 16px;
   margin: 8px 0;
-  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .highlight-box-green {
@@ -845,7 +880,7 @@ table.timeline-table td {
   padding: 12px 16px;
   border-radius: 16px;
   margin: 8px 0;
-  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5, 10, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 /* ── 分区标题横幅 ── */
@@ -858,7 +893,7 @@ table.timeline-table td {
   border-radius: 999px;
   padding: 8px 14px;
   margin-bottom: 16px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.08);
 }
 
 .hero-kicker {
@@ -870,7 +905,7 @@ table.timeline-table td {
   background: rgba(255,255,255,0.035);
   border: 1px solid rgba(255,255,255,0.08);
   color: #94a3b8;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.08);
 }
 
 .hero-kicker::before,
@@ -879,8 +914,8 @@ table.timeline-table td {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #818cf8, #22d3ee);
-  box-shadow: 0 0 16px rgba(129,140,248,0.35);
+  background: linear-gradient(135deg, #818cf8, #6366f1, #22d3ee);
+  box-shadow: 0 0 16px rgba(129,140,248,0.35), 0 0 4px rgba(99,102,241,0.5);
 }
 
 @media (max-width: 900px) {
@@ -962,7 +997,7 @@ table.timeline-table td {
   color: #cbd5e1;
   font-size: 0.95rem;
   line-height: 1.7;
-  box-shadow: 0 12px 28px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 12px 28px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .capability-card {
@@ -973,7 +1008,7 @@ table.timeline-table td {
   padding: 16px 16px 14px;
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 28px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 28px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .capability-card-blue { background: linear-gradient(180deg, rgba(59,130,246,0.1), rgba(59,130,246,0.04)); border-color: rgba(59,130,246,0.16); }
@@ -1219,6 +1254,43 @@ button[title="Show slide overview"] {
   display: none !important;
 }
 
+/* ── 替换默认 Slidev 导航栏 Logo ── */
+.slidev-nav > a:first-child svg {
+  display: none !important;
+}
+
+.slidev-nav > a:first-child {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.slidev-nav > a:first-child::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6366f1, #818cf8, #22d3ee);
+  opacity: 0.85;
+}
+
+.slidev-nav > a:first-child::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  top: 10px;
+  left: 14px;
+  box-shadow: 10px 0 0 white, 5px 9px 0 white;
+}
+
 /* ── 补齐稳定使用的色系卡片 ── */
 .arch-card-yellow {
   background: linear-gradient(180deg, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.04));
@@ -1250,7 +1322,7 @@ button[title="Show slide overview"] {
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
-  box-shadow: 0 10px 28px rgba(5, 10, 28, 0.18), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 28px rgba(5, 10, 28, 0.18), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .compare-panel-before {
@@ -1315,7 +1387,7 @@ button[title="Show slide overview"] {
   padding: 16px 18px;
   border: 1px solid rgba(255,255,255,0.08);
   background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-  box-shadow: 0 12px 28px rgba(5,10,28,0.18), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 12px 28px rgba(5,10,28,0.18), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .statement-card strong {
@@ -1388,7 +1460,7 @@ button[title="Show slide overview"] {
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.08);
   background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
-  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .chapter-map-card::before {
@@ -1396,7 +1468,7 @@ button[title="Show slide overview"] {
   width: 44px;
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #818cf8, #22d3ee);
+  background: linear-gradient(135deg, #818cf8, #6366f1, #22d3ee);
   opacity: 0.8;
 }
 
@@ -1410,7 +1482,7 @@ button[title="Show slide overview"] {
   border-radius: 18px;
   padding: 16px 16px 14px;
   border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .tool-cluster-indigo {
@@ -1451,7 +1523,7 @@ button[title="Show slide overview"] {
   padding: 16px 18px;
   border: 1px solid rgba(255,255,255,0.08);
   background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
-  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 10px 24px rgba(5,10,28,0.16), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
 .proof-bars {
@@ -1494,7 +1566,8 @@ button[title="Show slide overview"] {
 .flow-node,
 .flow-node-green,
 .flow-node-amber,
-.flow-node-purple {
+.flow-node-purple,
+.flow-node-indigo {
   border-radius: 12px;
   padding: 9px 12px;
   text-align: center;
@@ -1520,6 +1593,11 @@ button[title="Show slide overview"] {
 .flow-node-purple {
   background: linear-gradient(180deg, rgba(167,139,250,0.1), rgba(167,139,250,0.04));
   border-color: rgba(167,139,250,0.16);
+}
+
+.flow-node-indigo {
+  background: linear-gradient(180deg, rgba(99,102,241,0.1), rgba(99,102,241,0.04));
+  border-color: rgba(99,102,241,0.16);
 }
 
 .flow-arrow {
@@ -1607,4 +1685,155 @@ button[title="Show slide overview"] {
   opacity: 0.4;
 }
 
+/* =========================================================
+   动画增强 — 流程动画 / 入场动画 / 逐步揭示
+   ========================================================= */
 
+/* ── 通用入场动画 ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(129,140,248,0.15), 0 0 24px rgba(129,140,248,0.05); }
+  50%      { box-shadow: 0 0 20px rgba(129,140,248,0.3), 0 0 40px rgba(129,140,248,0.1); }
+}
+
+@keyframes flowPulse {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── 流程节点逐步揭示动画类 ── */
+.anim-step {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-step--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anim-step--active {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* ── 流程连线流动动画 ── */
+.flow-line-animated {
+  background: linear-gradient(90deg, rgba(129,140,248,0.1), rgba(129,140,248,0.5), rgba(34,211,238,0.5), rgba(34,211,238,0.1));
+  background-size: 200% 100%;
+  animation: flowPulse 1.5s linear infinite;
+}
+
+/* ── v-click 优化样式 ── */
+.slidev-layout .slidev-vclick-target {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slidev-layout .slidev-vclick-hidden {
+  opacity: 0 !important;
+  transform: translateY(10px);
+}
+
+.slidev-layout .slidev-vclick-current {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ── 流程节点发光态 ── */
+.flow-node-glow {
+  box-shadow: 0 0 16px rgba(129,140,248,0.2), 0 0 32px rgba(129,140,248,0.08) !important;
+  border-color: rgba(129,140,248,0.4) !important;
+  transform: scale(1.03);
+  transition: all 0.3s;
+}
+
+.flow-node-green.flow-node-glow {
+  box-shadow: 0 0 16px rgba(74,222,128,0.2), 0 0 32px rgba(74,222,128,0.08) !important;
+  border-color: rgba(74,222,128,0.4) !important;
+}
+
+.flow-node-amber.flow-node-glow {
+  box-shadow: 0 0 16px rgba(251,191,36,0.2), 0 0 32px rgba(251,191,36,0.08) !important;
+  border-color: rgba(251,191,36,0.4) !important;
+}
+
+.flow-node-purple.flow-node-glow {
+  box-shadow: 0 0 16px rgba(167,139,250,0.2), 0 0 32px rgba(167,139,250,0.08) !important;
+  border-color: rgba(167,139,250,0.4) !important;
+}
+
+/* ── Demo 区域容器 ── */
+.demo-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  height: 100%;
+  align-items: start;
+}
+
+.demo-stage-full {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+/* ── TOC 目录页紧凑行布局 ── */
+.toc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  justify-content: center;
+}
+
+.toc-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 2fr;
+  gap: 10px;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), inset 0 -1px 0 rgba(0,0,0,0.08);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.toc-row:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+}
+
+.toc-row--amber {
+  background: linear-gradient(180deg, rgba(251,146,60,0.06), rgba(251,146,60,0.02));
+  border-color: rgba(251,146,60,0.12);
+}
+
+.toc-row--cyan {
+  background: linear-gradient(180deg, rgba(34,211,238,0.06), rgba(34,211,238,0.02));
+  border-color: rgba(34,211,238,0.12);
+}
+
+.toc-row--green {
+  background: linear-gradient(180deg, rgba(74,222,128,0.06), rgba(74,222,128,0.02));
+  border-color: rgba(74,222,128,0.12);
+}
+
+.toc-row--purple {
+  background: linear-gradient(180deg, rgba(167,139,250,0.06), rgba(167,139,250,0.02));
+  border-color: rgba(167,139,250,0.12);
+}

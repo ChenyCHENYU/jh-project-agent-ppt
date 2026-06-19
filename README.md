@@ -38,19 +38,30 @@ npm run export:pptx
 
 ```
 jh-project-agent-ppt/
-├── slides.md              # 主入口（封面 + TOC + 章节导入）
+├── slides.md              # 主入口（封面 + 数据页 + TOC + 章节导入）
 ├── pages/
-│   ├── 01-why.md          # 第一章：为什么需要这套体系
-│   ├── 02-l0-l7.md        # 第二章：L0–L7 能力层级体系
-│   ├── 03-kit.md          # 第三章：wl-skills-kit 深度解析
-│   ├── 04-ui.md           # 第四章：wl-skills-ui 视觉体系
-│   ├── 05-bd.md           # 第五章：wl-skills-bd 后端镜像
-│   ├── 06-workflow.md     # 第六章：AI 工作流实战
-│   ├── 07-challenges.md   # 第七章：挑战与突破
-│   └── 08-vision.md       # 第八章：长期愿景与 Hermes 接入
+│   ├── 00-preface.md      # 开场引言
+│   ├── 01-why.md          # Ch01：为什么需要这套体系
+│   ├── 02-l0-l7.md        # Ch02：L0–L7 能力层级体系
+│   ├── 03-design.md       # Ch03：wl-skills-design 产品设计
+│   ├── 03-kit.md          # Ch04：wl-skills-kit 前端工具链
+│   ├── 04-ui.md           # Ch05：wl-skills-ui 视觉体系
+│   ├── 05-bd.md           # Ch06：wl-skills-bd 后端工程
+│   ├── 06-workflow.md     # Ch07：AI 工作流实战
+│   ├── 06.5-demo.md       # Ch07.5：实战演示
+│   ├── 08-closed-loop.md  # Ch08：AI 工作流完整闭环
+│   ├── 07-challenges.md   # Ch09：挑战与突破
+│   ├── 08-vision.md       # Ch10：远期愿景与行动计划
+│   ├── 09-hermes-agent.md # Ch11：Hermes Agent 深度解析
+│   └── 10-ending.md       # 结束页
 ├── components/
+│   ├── CodeDiff.vue       # 代码差异对比组件
+│   ├── CodeTypewriter.vue # 代码打字机动画组件
+│   ├── FlowPipeline.vue   # L5 流程管线组件
+│   ├── TerminalPlayer.vue # 终端回放组件
 │   ├── StatusBadge.vue    # 状态徽标组件
 │   └── LevelCard.vue      # L 层级卡片组件
+├── demo-data.ts           # Demo 模拟数据
 ├── styles/
 │   └── index.css          # 自定义深色技术主题样式
 └── package.json
@@ -60,15 +71,21 @@ jh-project-agent-ppt/
 
 | 章节 | 主题 | 幻灯片数 |
 |------|------|---------|
-| Ch01 | 为什么需要这套体系 | ~6 |
-| Ch02 | L0–L7 能力层级体系 | ~8 |
-| Ch03 | wl-skills-kit 深度解析 | ~10 |
-| Ch04 | wl-skills-ui 视觉体系 | ~6 |
-| Ch05 | wl-skills-bd 后端镜像 | ~5 |
-| Ch06 | AI 工作流实战 | ~8 |
-| Ch07 | 挑战与突破 | ~6 |
-| Ch08 | 长期愿景与 Hermes 接入 | ~6 |
-| | **合计** | **~65** |
+| 开场 | 开场引言 + 数据页 + 行动预览 | 3 |
+| Ch01 | 为什么需要这套体系 | ~4 |
+| Ch02 | L0–L7 能力层级体系 | ~5 |
+| Ch03 | wl-skills-design 产品设计 | ~5 |
+| Ch04 | wl-skills-kit 前端工具链 | ~5 |
+| Ch05 | wl-skills-ui 视觉体系 | ~4 |
+| Ch06 | wl-skills-bd 后端工程 | ~4 |
+| Ch07 | AI 工作流实战 | ~4 |
+| Ch07.5 | 实战演示 | ~6 |
+| Ch08 | AI 工作流完整闭环 | ~5 |
+| Ch09 | 挑战与突破 | ~3 |
+| Ch10 | 远期愿景与行动计划 | ~6 |
+| Ch11 | Hermes Agent 深度解析 | ~4 |
+| 结束 | 结束页 | 1 |
+| | **合计** | **~59** |
 
 ## 演讲者功能
 

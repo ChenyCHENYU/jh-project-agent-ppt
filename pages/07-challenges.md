@@ -4,8 +4,8 @@ title: 挑战与突破
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-red-400 tracking-widest mb-3 uppercase">Chapter 07</div>
-  <h2 class="text-4xl font-black mb-4">
+  <div class="text-sm text-red-400 tracking-widest mb-3 uppercase">Chapter 09</div>
+  <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text-warm">挑战与突破</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">不是回避问题，而是画清边界</p>

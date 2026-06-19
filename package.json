@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "@slidev/cli": "0.49",
-    "@slidev/theme-default": "0.21"
+    "@slidev/theme-default": "0.21",
+    "@vueuse/motion": "^3.0.3"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.11.174",
+    "playwright-chromium": "^1.61.0"
   }
 }

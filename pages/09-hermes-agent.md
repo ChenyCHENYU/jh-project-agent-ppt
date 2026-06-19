@@ -4,8 +4,8 @@ title: Hermes Agent 深度解析
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-amber-400 tracking-widest mb-3 uppercase">Chapter 09</div>
-  <h2 class="text-4xl font-black mb-4">
+  <div class="text-sm text-amber-400 tracking-widest mb-3 uppercase">Chapter 11</div>
+  <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text">Hermes Agent</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">同道中人还是遥远的参照？</p>
@@ -58,6 +58,9 @@ Hermes 系列模型的作者，开源，MIT License
 - 🌐 20+ 消息平台（飞书、钉钉等）
 
 </div>
+
+</div>
+
 ---
 layout: two-cols
 title: 共同点与差异点
@@ -126,47 +129,53 @@ layout: default
 title: 结论 — 我们的位置
 ---
 
-# 结论：我们不是在重复造轮子
+<h1 class="tight-title">结论：我们不是在重复造轮子</h1>
 
-<div class="grid grid-cols-2 gap-5 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-3">
 
-<div class="arch-card-purple space-y-3">
+<div class="arch-card-purple">
+  <div class="flex items-center gap-2 mb-2">
+    <div class="text-2xl">🚗</div>
+    <div class="text-purple-300 font-bold text-base">Hermes Agent = 引擎</div>
+  </div>
+  <div class="text-slate-300 text-sm space-y-1.5 leading-relaxed">
+    <div>通用调度 · 持久记忆 · 自演化</div>
+    <div>L6 Multi-Agent（生产可用）</div>
+    <div>20+ 平台接入 · 定时任务</div>
+    <div>社区生态 · 模型中立（200+ 模型）</div>
+  </div>
+  <div class="mt-3 pt-2 border-t border-purple-500/30 text-sm">
+    <span class="text-purple-400 font-bold">解决的：</span><span class="text-slate-200">通用 AI 运行时</span>
+  </div>
+</div>
 
-<div class="text-center text-3xl mb-2">🚗</div>
-
-**Hermes Agent = 引擎**
-
-- 通用调度、持久记忆、自演化
-- L6 Multi-Agent（生产可用）  
-- 20+ 平台接入、定时任务
-- 社区生态、模型中立（200+ 模型）
-- **他们解决的：通用 AI 运行时**
+<div class="arch-card-yellow">
+  <div class="flex items-center gap-2 mb-2">
+    <div class="text-2xl">⛽</div>
+    <div class="text-amber-300 font-bold text-base">我们的体系 = 领域燃料</div>
+  </div>
+  <div class="text-slate-300 text-sm space-y-1.5 leading-relaxed">
+    <div>前端企业规范（Vue3 · AGGrid · UnoCSS）</div>
+    <div>后端工作流（Spring Boot · MyBatis-Plus）</div>
+    <div>CI/CD 质量门禁</div>
+    <div>团队策展 Skills（经过项目验证）</div>
+  </div>
+  <div class="mt-3 pt-2 border-t border-amber-500/30 text-sm">
+    <span class="text-amber-400 font-bold">解决的：</span><span class="text-slate-200">企业领域 AI 落地</span>
+  </div>
+</div>
 
 </div>
 
-<div class="arch-card-yellow space-y-3">
+<div class="mt-4 text-center">
+  <div style="background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.12),rgba(251,191,36,0.12));border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px 24px;max-width:640px;margin:0 auto">
+    <div class="text-xl font-bold text-white leading-relaxed">
+      我们不是在重复造轮子——<br>
+      我们在为引擎配上<span class="gradient-text">领域专用的燃料</span>。
+    </div>
+  </div>
 
-<div class="text-center text-3xl mb-2">⛽</div>
-
-**我们的体系 = 领域燃料**
-
-- 前端企业规范（Vue3 · AGGrid · UnoCSS）
-- 后端工作流（Spring Boot · MyBatis-Plus）
-- CI/CD 质量门禁  
-- 团队策展 Skills（经过项目验证）
-- **我们解决的：企业领域 AI 落地**
-
-</div>
-
-</div>
-
-<div class="mt-5 text-center">
-  <blockquote class="text-xl font-bold text-slate-200 border-l-4 border-indigo-400 pl-5 text-left mx-auto max-w-2xl">
-    "我们不是在重复造轮子——<br>
-    我们在为引擎配上<span class="gradient-text">领域专用的燃料</span>。"
-  </blockquote>
-
-  <div class="mt-4 flex justify-center gap-4 flex-wrap">
+  <div class="mt-4 flex justify-center gap-3">
     <span class="badge badge-done">SKILL.md 同源</span>
     <span class="badge badge-new">MCP 互通</span>
     <span class="badge badge-wip">L6/L7 路径已清晰</span>

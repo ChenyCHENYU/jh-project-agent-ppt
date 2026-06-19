@@ -4,8 +4,8 @@ title: AI 工作流实战
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-yellow-400 tracking-widest mb-3 uppercase">Chapter 06</div>
-  <h2 class="text-4xl font-black mb-4">
+  <div class="text-sm text-yellow-400 tracking-widest mb-3 uppercase">Chapter 07</div>
+  <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text">AI 工作流实战</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">从人工串联 Skills 到 AI 自动化流水线</p>
@@ -14,11 +14,12 @@ title: AI 工作流实战
 
 ---
 layout: default
+clicks: 11
 ---
 
 <h1 class="tight-title">L5 全链路时序：一图览全程</h1>
 
-<div class="page-fit compact-stack l5-timeline-stage text-[12px] leading-5">
+<div class="page-fit compact-stack l5-timeline-stage text-[11px] leading-4">
 
 <div class="fit-grid-4-tight text-[11px]">
   <div class="panel-soft text-center !px-2 !py-1.5">
@@ -43,91 +44,9 @@ layout: default
   </div>
 </div>
 
-<div class="panel-soft dense-table timeline-table l5-timeline-table">
-  <table>
-    <thead>
-      <tr>
-        <th style="width:44px">步骤</th>
-        <th style="width:112px">流向</th>
-        <th style="width:126px">动作</th>
-        <th>产物 / 结果</th>
-        <th style="width:70px;text-align:center">门控</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="text-indigo-300 font-bold">01</td>
-        <td>开发者 → AI</td>
-        <td>需求输入</td>
-        <td>原型 / 截图 / 口述</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">02</td>
-        <td>AI → Kit</td>
-        <td>prototype-scan</td>
-        <td>页面清单、字段表、路由建议</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">03</td>
-        <td>AI → Kit</td>
-        <td>api-contract</td>
-        <td>生成 api.md 接口契约</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">04</td>
-        <td>AI → 后端</td>
-        <td>共享契约</td>
-        <td>api.md 成为唯一前后端交汇点</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">05</td>
-        <td>AI → Kit</td>
-        <td>page-codegen</td>
-        <td>产出 index.vue、data.ts、index.scss</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">06</td>
-        <td>AI → Kit</td>
-        <td>validate-page</td>
-        <td>运行校验，必要时联动 doctor-ui</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">07</td>
-        <td>AI → Kit</td>
-        <td>convention-audit</td>
-        <td>输出规范审查报告，定位待整改项</td>
-        <td style="text-align:center">自动</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">08</td>
-        <td>AI → 开发者</td>
-        <td>diff 预览</td>
-        <td>展示菜单 / 字典 / 权限写入变更</td>
-        <td style="text-align:center" class="text-yellow-300 font-bold">人工</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">09</td>
-        <td>开发者 → AI</td>
-        <td>确认放行</td>
-        <td>人工确认后继续执行同步</td>
-        <td style="text-align:center" class="text-yellow-300 font-bold">人工</td>
-      </tr>
-      <tr>
-        <td class="text-indigo-300 font-bold">10</td>
-        <td>AI / Kit → 后端</td>
-        <td>menu/dict/permission-sync</td>
-        <td>后台同步完成，页面达到上线就绪状态</td>
-        <td style="text-align:center" class="text-green-300 font-bold">完成</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<FlowPipeline
+  :steps="timelineSteps"
+/>
 
 <div class="grid grid-cols-2 gap-1.5 text-[10px] leading-4.5">
   <div class="statement-card statement-card-indigo !p-2.5">
@@ -139,6 +58,23 @@ layout: default
 </div>
 
 </div>
+
+<script setup>
+import FlowPipeline from '../components/FlowPipeline.vue'
+
+const timelineSteps = [
+  { num: '01', skill: 'prototype-scan', label: '原型/口述 → 页面清单', product: '→ reports/PROTOTYPE_SCAN_*.md', variant: 'cyan' },
+  { num: '02', skill: 'api-contract', label: '页面清单 → 接口契约', product: '→ api.md', variant: 'indigo' },
+  { num: '03', skill: 'page-codegen', label: '契约+清单 → 三文件产出', product: '→ index.vue + data.ts + index.scss', variant: 'purple' },
+  { num: '04', skill: 'validate-page', label: '校验产出完整性', product: '→ AGGrid/cid/api.md 通过', variant: 'cyan' },
+  { num: '05', skill: 'convention-audit', label: '14 条规范审计', product: '→ reports/AUDIT_AI_*.md', variant: 'indigo' },
+  { num: '06', skill: 'code-fix', label: '自动修复偏差', product: '→ 按审计报告逐项修复', variant: 'green' },
+  { num: '07', skill: 'doctor-ui', label: 'UI 接入诊断', product: '→ I001~I004 + R001~R018', variant: 'cyan' },
+  { num: '08', skill: 'menu-sync', label: '菜单注册 (MCP)', product: '→ SYS_MENU_INFO.md', variant: 'amber' },
+  { num: '09', skill: 'dict-sync', label: '字典同步 (MCP)', product: '→ 线上字典对齐', variant: 'amber' },
+  { num: '10', skill: 'permission-sync', label: '权限+角色同步', product: '→ v-permission + 角色授权', variant: 'green' },
+]
+</script>
 
 ---
 layout: default
@@ -286,27 +222,27 @@ layout: default
 <div class="flex justify-center mb-2 text-slate-600 text-xs tracking-widest">▼ 分发给各专职 Agent ▼</div>
 
 <div class="grid grid-cols-5 gap-2 text-xs mb-3">
-  <div class="panel-soft-indigo text-center !p-2">
+  <div v-click class="panel-soft-indigo text-center !p-2">
     <div class="text-base mb-0.5">📋</div>
     <div class="font-bold text-blue-300 text-[11px]">需求解析</div>
     <div class="micro-note mt-0.5">prototype-scan<br>business-doc</div>
   </div>
-  <div class="panel-soft-purple text-center !p-2">
+  <div v-click class="panel-soft-purple text-center !p-2">
     <div class="text-base mb-0.5">⚡</div>
     <div class="font-bold text-violet-300 text-[11px]">代码生成</div>
     <div class="micro-note mt-0.5">api-contract<br>page-codegen</div>
   </div>
-  <div class="panel-soft-cyan text-center !p-2">
+  <div v-click class="panel-soft-cyan text-center !p-2">
     <div class="text-base mb-0.5">✅</div>
     <div class="font-bold text-cyan-300 text-[11px]">校验</div>
     <div class="micro-note mt-0.5">validate-page<br>doctor-ui</div>
   </div>
-  <div class="panel-soft-green text-center !p-2">
+  <div v-click class="panel-soft-green text-center !p-2">
     <div class="text-base mb-0.5">🔍</div>
     <div class="font-bold text-green-300 text-[11px]">审计</div>
     <div class="micro-note mt-0.5">convention-audit<br>code-fix</div>
   </div>
-  <div class="panel-soft-amber text-center !p-2">
+  <div v-click class="panel-soft-amber text-center !p-2">
     <div class="text-base mb-0.5">🔄</div>
     <div class="font-bold text-amber-300 text-[11px]">同步</div>
     <div class="micro-note mt-0.5">menu/dict/perm</div>

@@ -5,8 +5,8 @@ titleTemplate: '%s | 金恒科技·敏捷团队'
 info: |
   ## AI 驱动研发工程体系 · 内部培训
 
-  四仓库协同：jh-agileteam-doc 规范底座 · wl-skills-kit 前端工具链  
-  wl-skills-ui UI 风格框架 · wl-skills-bd 后端 AI 工具
+  五仓库协同：jh-agileteam-doc 规范底座 · wl-skills-design 产品设计  
+  wl-skills-kit 前端工具链 · wl-skills-ui UI 风格框架 · wl-skills-bd 后端 AI 工具
   以 wl-mdata / mdm-service 为业务基线，打通全链路 AI 落地
 
   **金恒科技 · 敏捷团队 · 2026**
@@ -21,6 +21,7 @@ fonts:
   sans: 'Noto Sans SC'
   mono: 'JetBrains Mono'
 css: unocss
+favicon: /favicon.svg
 ---
 
 <!-- =======================================
@@ -37,11 +38,11 @@ css: unocss
   </h1>
 
   <p class="text-xl text-slate-300 mb-2">
-    <span class="text-slate-200">规范沉淀 · 前后端 AI 工具链 · 业务项目实证</span>
+    <span class="text-slate-200">规范沉淀 · 设计先行 · 前后端 AI 工具链 · 业务项目实证</span>
   </p>
   <div class="cover-meta-stack mb-8 text-base text-slate-400">
     <div class="cover-meta-line">
-      <span>jh-agileteam-doc · wl-skills-kit · wl-skills-ui · wl-skills-bd</span>
+      <span>jh-agileteam-doc · wl-skills-design · wl-skills-kit · wl-skills-ui · wl-skills-bd</span>
     </div>
     <div class="cover-meta-line text-sm text-slate-500">
       <span>以 wl-mdata / mdm-service 为业务基线</span>
@@ -70,7 +71,7 @@ css: unocss
     <span class="badge badge-done">L1–L4 已落地</span>
     <span class="badge badge-wip">L5 多项目试运行</span>
     <span class="badge badge-plan">L6–L7 规划中</span>
-    <span class="text-slate-500 text-xs ml-2">前端 v2.9.4 · UI v1.8.13 · 后端 v0.0.1 骨架</span>
+    <span class="text-slate-500 text-xs ml-2">设计 v0.6.0 · 前端 v2.9.4 · UI v1.8.13 · 后端 v0.0.1 骨架</span>
   </div>
 
   <div class="cover-corner-note">2026 · 持续演进中</div>
@@ -130,28 +131,50 @@ layout: default
 layout: intro
 ---
 
-# 听完这次培训，你能拿走什么
+# 听完这次培训，你可以做些尝试
 
-<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="grid grid-cols-2 gap-3 mt-3">
 
 <div class="arch-card">
-<div class="text-indigo-300 font-bold mb-2">🔧 一套可直接接入的工程底座</div>
-<div class="text-slate-400 text-sm leading-relaxed">一行命令把 10 个 Skill + 14 条规范 + 17 个 MCP Tool 写入你的项目，AI 立刻从"猜"变成"按规则工作"。</div>
+<div class="text-indigo-300 font-bold mb-1.5">🔧 两条命令，明天就能用</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+  <div class="font-mono text-xs text-indigo-300 mb-1">$ npx @agile-team/wl-skills-kit</div>
+  <div class="text-slate-400 text-xs mb-2">→ 项目里立刻多出 10 个 Skill + 14 条规范 + 17 个 MCP Tool</div>
+  <div class="font-mono text-xs text-indigo-300 mb-1">$ npx @agile-team/wl-skills-design</div>
+  <div class="text-slate-400 text-xs">→ 7 个设计 Skill + 176 项验证清单，AI 画流程图不再各画各的</div>
+</div>
 </div>
 
 <div class="arch-card-cyan">
-<div class="text-cyan-300 font-bold mb-2">📐 一份前后端统一契约方案</div>
-<div class="text-slate-400 text-sm leading-relaxed">api.md 作为唯一交汇点，前端生成它、后端消费它、AI 两端都读它。联调返工从 4~8 小时降到 30 分钟内。</div>
+<div class="text-cyan-300 font-bold mb-1.5">📐 一份契约，前后端不再对不上</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+  <div class="text-slate-400 text-xs">以前：spec 写 amount，数据库建 ORDER_AMOUNT，接口传 orderAmt</div>
+  <div class="text-cyan-300 text-xs my-1">→ 联调时才发现对不上，返工 4~8 小时</div>
+  <div class="text-slate-400 text-xs">现在：术语词典锚定一个名 → 设计/数据库/接口三方 ⊆ 词典校验</div>
+  <div class="text-green-300 text-xs my-1">→ 设计时就杜绝，不是评审时才发现。返工降到 30 分钟内</div>
+</div>
 </div>
 
 <div class="arch-card-green">
-<div class="text-green-300 font-bold mb-2">✅ 一条已验证的全链路 Pipeline</div>
-<div class="text-slate-400 text-sm leading-relaxed">从需求扫描到页面生成、规范审计、菜单同步，10 步中 8 步自动推进，人只在写后台数据前确认一次。</div>
+<div class="text-green-300 font-bold mb-1.5">✅ 已验证：wl-mdata 项目实测结果</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+  <div class="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
+    <div class="text-slate-400">BaseTable 合规</div><div class="text-red-400">28% <span class="text-green-400">→ 100%</span></div>
+    <div class="text-slate-400">api.md 契约存在</div><div class="text-red-400">0% <span class="text-green-400">→ 100%</span></div>
+    <div class="text-slate-400">cid 绑定完整</div><div class="text-red-400">15% <span class="text-green-400">→ 100%</span></div>
+    <div class="text-slate-400">规范审计</div><div class="text-red-400">0 偏差</div>
+  </div>
+</div>
 </div>
 
 <div class="arch-card-orange">
-<div class="text-orange-300 font-bold mb-2">🎯 一个清晰的团队落地路径</div>
-<div class="text-slate-400 text-sm leading-relaxed">不是"全员转型"，而是先 1~2 人跑通真实页面，用结果说话再扩散。今天会给出具体的第一步行动。</div>
+<div class="text-orange-300 font-bold mb-1.5">🎯 今天散会后的第一步</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+  <div class="text-xs text-slate-400 mb-1">1. 挑你手头一个真实需求</div>
+  <div class="text-xs text-slate-400 mb-1">2. <code>wl-skills-design</code> 出设计 → <code>kit</code> 出页面 → <code>bd</code> 出骨架</div>
+  <div class="text-xs text-slate-400 mb-1">3. 跑一遍 convention-audit，看报告</div>
+  <div class="text-amber-300 text-xs">1~2 个人先试着跑通一个小需求，跑出来的结果比任何培训都有说服力。</div>
+</div>
 </div>
 
 </div>
@@ -160,72 +183,78 @@ layout: intro
 layout: default
 ---
 
-# 今天这条主线
+<div class="toc-page">
 
-<div class="grid grid-cols-2 gap-3 mt-3" style="height:calc(100% - 4rem)">
-
-<div class="arch-card flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l0 text-xs">01</span>
-    <span class="font-bold text-blue-300 text-sm">为什么需要这套体系</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">AI 写单个页面没问题，但批量生成 + 多步串联 + 多人协同时一致性急剧下降。根因：缺少项目级上下文约束。</div>
+<div class="toc-row">
+  <span class="level-tag l0 text-xs">01</span>
+  <span class="font-bold text-blue-300 text-sm">为什么需要这套体系</span>
+  <span class="text-slate-500 text-xs">AI 单页没问题，批量 + 多步 + 多人协同时一致性急剧下降</span>
 </div>
 
-<div class="arch-card flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l1 text-xs">02</span>
-    <span class="font-bold text-indigo-300 text-sm">L0–L7 能力层级体系</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">8 层递进路径：文件注入 → 提示词路由 → Skill 固化 → MCP 实时查询 → CLI 工程化 → Pipeline → Multi-Agent → 自演化。</div>
+<div class="toc-row">
+  <span class="level-tag l1 text-xs">02</span>
+  <span class="font-bold text-indigo-300 text-sm">L0–L7 能力层级体系</span>
+  <span class="text-slate-500 text-xs">文件注入 → 提示词路由 → Skill → MCP → CLI → Pipeline → Multi-Agent → 自演化</span>
 </div>
 
-<div class="arch-card flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l2 text-xs">03</span>
-    <span class="font-bold text-purple-300 text-sm">wl-skills-kit 前端工具链</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">10 Skill + 17 MCP Tool + 9 CLI + 14 条规范。一行命令接入，覆盖从需求扫描到菜单同步的完整前端链路。</div>
+<div class="toc-row toc-row--amber">
+  <span class="level-tag l2 text-xs">03</span>
+  <span class="font-bold text-amber-300 text-sm">wl-skills-design 产品设计</span>
+  <span class="text-slate-500 text-xs">7 Skill + 8 规范 + 176 验证 · 三角联动 · 生成即合规</span>
 </div>
 
-<div class="arch-card-cyan flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l3 text-xs">04</span>
-    <span class="font-bold text-cyan-300 text-sm">wl-skills-ui 视觉体系</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">设计令牌 → 原子控件 → 封装化妆 → 页面骨架 → Runtime 渲染。老项目一行样式入口统一视觉基线，不动业务代码。</div>
+<div class="toc-row">
+  <span class="level-tag l3 text-xs">04</span>
+  <span class="font-bold text-purple-300 text-sm">wl-skills-kit 前端工具链</span>
+  <span class="text-slate-500 text-xs">10 Skill + 17 MCP + 9 CLI + 14 规范 · 完整前端链路</span>
 </div>
 
-<div class="arch-card-green flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l4 text-xs">05</span>
-    <span class="font-bold text-green-300 text-sm">wl-skills-bd 后端工程</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">与前端镜像对齐的后端 AI 工程体系。9 步从 api.md 契约到可部署服务，反向沉淀自 mdm-service 真实项目。</div>
+<div class="toc-row toc-row--cyan">
+  <span class="level-tag l4 text-xs">05</span>
+  <span class="font-bold text-cyan-300 text-sm">wl-skills-ui 视觉体系</span>
+  <span class="text-slate-500 text-xs">令牌 → 原子控件 → 封装化妆 → 骨架 → Runtime · 老项目一行接入</span>
 </div>
 
-<div class="arch-card-orange flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l5 text-xs">06</span>
-    <span class="font-bold text-amber-300 text-sm">全链路 Pipeline 实战</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">10 步端到端流水线：需求输入 → 契约生成 → 代码产出 → 校验审计 → 后台同步。8 步自动推进，2 步人工门控。</div>
+<div class="toc-row toc-row--green">
+  <span class="level-tag l5 text-xs">06</span>
+  <span class="font-bold text-green-300 text-sm">wl-skills-bd 后端工程</span>
+  <span class="text-slate-500 text-xs">9 步从 api.md 到可部署服务 · 与前端镜像对齐</span>
 </div>
 
-<div class="arch-card-purple flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l6 text-xs">07</span>
-    <span class="font-bold text-purple-300 text-sm">挑战与突破</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">精准度从 30% 到 85% 的真实路径、上下文质量 > 长度、人工确认边界设定、团队小步落地节奏。</div>
+<div class="toc-row toc-row--amber">
+  <span class="level-tag l5 text-xs">07</span>
+  <span class="font-bold text-amber-300 text-sm">全链路 Pipeline 实战</span>
+  <span class="text-slate-500 text-xs">10 步端到端 · 8 步自动 + 2 步人工门控</span>
 </div>
 
-<div class="arch-card flex flex-col justify-center">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="level-tag l7 text-xs">08</span>
-    <span class="font-bold text-indigo-300 text-sm">远期愿景与行动计划</span>
-  </div>
-  <div class="text-slate-400 text-xs leading-relaxed">三阶段推进：先跑通 → 再调度 → 再闭环。产品·研发·测试共用一套契约体系，附团队落地行动清单。</div>
+<div class="toc-row toc-row--cyan">
+  <span class="level-tag l3 text-xs" style="font-size:0.6em">07.5</span>
+  <span class="font-bold text-cyan-300 text-sm">实战演示</span>
+  <span class="text-slate-500 text-xs">终端回放 · 流程动画 · 代码生成 · 改造对比</span>
+</div>
+
+<div class="toc-row toc-row--green">
+  <span class="level-tag l5 text-xs" style="background:rgba(52,211,153,0.3);color:#6ee7b7">08</span>
+  <span class="font-bold text-emerald-300 text-sm">AI 工作流完整闭环</span>
+  <span class="text-slate-500 text-xs">需求设计 → 前端 → 后端 → 质量验证 · 契约贯穿</span>
+</div>
+
+<div class="toc-row toc-row--purple">
+  <span class="level-tag l6 text-xs">09</span>
+  <span class="font-bold text-purple-300 text-sm">挑战与突破</span>
+  <span class="text-slate-500 text-xs">精准度 30%→85% · 上下文质量 · 人工门控 · 落地节奏</span>
+</div>
+
+<div class="toc-row">
+  <span class="level-tag l7 text-xs">10</span>
+  <span class="font-bold text-indigo-300 text-sm">远期愿景与行动计划</span>
+  <span class="text-slate-500 text-xs">先跑通 → 再调度 → 再闭环 · 三阶段推进</span>
+</div>
+
+<div class="toc-row toc-row--purple">
+  <span class="level-tag l6 text-xs">11</span>
+  <span class="font-bold text-amber-300 text-sm">Hermes Agent 深度解析</span>
+  <span class="text-slate-500 text-xs">SKILL.md 同源 · MCP 互通 · 互补路径</span>
 </div>
 
 </div>
@@ -236,6 +265,10 @@ src: ./pages/01-why.md
 
 ---
 src: ./pages/02-l0-l7.md
+---
+
+---
+src: ./pages/03-design.md
 ---
 
 ---
@@ -255,9 +288,25 @@ src: ./pages/06-workflow.md
 ---
 
 ---
+src: ./pages/06.5-demo.md
+---
+
+---
+src: ./pages/08-closed-loop.md
+---
+
+---
 src: ./pages/07-challenges.md
 ---
 
 ---
 src: ./pages/08-vision.md
+---
+
+---
+src: ./pages/09-hermes-agent.md
+---
+
+---
+src: ./pages/10-ending.md
 ---

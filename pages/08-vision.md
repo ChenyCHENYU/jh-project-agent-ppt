@@ -4,8 +4,8 @@ title: 远期愿景与行动计划
 ---
 
 <div class="h-full flex flex-col justify-center">
-  <div class="text-sm text-violet-400 tracking-widest mb-3 uppercase">Chapter 08</div>
-  <h2 class="text-4xl font-black mb-4">
+  <div class="text-sm text-violet-400 tracking-widest mb-3 uppercase">Chapter 10</div>
+  <h2 class="text-3xl font-black mb-3">
     <span class="gradient-text">远期愿景与行动计划</span>
   </h2>
   <p class="text-slate-300 text-lg mb-2">全链路闭环 · 多智能体协同 · L7 自演化</p>
