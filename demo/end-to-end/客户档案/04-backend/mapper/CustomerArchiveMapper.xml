@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  客户档案 Mapper XML
+  由 wl-skills-bd 的 mapper-xml-gen 基于 Entity + api.md 生成。
+  风格遵循 mdm-service：Oracle 大写下划线列名，IS_DELETE=0 逻辑删除条件。
+-->
+<mapper namespace="com.jhict.sale.mapper.CustomerArchiveMapper">
+
+  <select id="queryPage" resultType="com.jhict.sale.api.entity.CustomerArchive">
+    SELECT
+      ID                 AS id,
+      CUSTOMER_CODE      AS customerCode,
+      CUSTOMER_NAME      AS customerName,
+      CUSTOMER_SHORT_NAME AS customerShortName,
+      CUSTOMER_TYPE      AS customerType,
+      COUNTRY            AS country,
+      CURRENCY           AS currency,
+      TAX_CATEGORY       AS taxCategory,
+      RELATION_TYPE      AS relationType,
+      PARENT_CUSTOMER    AS parentCustomer,
+      GROUP_NAME         AS groupName,
+      CREATOR            AS creator,
+      CREATE_TIME        AS createTime,
+      APPLY_ORG          AS applyOrg,
+      ENABLE_STATUS      AS enableStatus,
+      DISABLE_TIME       AS disableTime,
+      COMPANY_ID         AS companyId,
+      CREATE_USER_NO     AS createUserNo,
+      CREATE_DATE_TIME   AS createDateTime,
+      UPDATE_USER_NO     AS updateUserNo,
+      UPDATE_DATE_TIME   AS updateDateTime,
+      REVISION           AS revision,
+      IS_DELETE          AS isDelete
+    FROM SALE_CUSTOMER_ARCHIVE
+    <where>
+      IS_DELETE = 0
+      <if test="param != null">
+        <if test="param.customerCategory != null and param.customerCategory != ''">
+          AND CUSTOMER_CATEGORY = #{param.customerCategory}
+        </if>
+        <if test="param.customerName != null and param.customerName != ''">
+          AND CUSTOMER_NAME LIKE CONCAT(CONCAT('%', #{param.customerName}), '%')
+        </if>
+        <if test="param.customerCode != null and param.customerCode != ''">
+          AND CUSTOMER_CODE = #{param.customerCode}
+        </if>
+        <if test="param.enableStatus != null and param.enableStatus != ''">
+          AND ENABLE_STATUS = #{param.enableStatus}
+        </if>
+        <if test="param.createDateStart != null and param.createDateStart != ''">
+          AND CREATE_TIME &gt;= TO_DATE(#{param.createDateStart}, 'YYYY-MM-DD')
+        </if>
+        <if test="param.createDateEnd != null and param.createDateEnd != ''">
+          AND CREATE_TIME &lt; TO_DATE(#{param.createDateEnd}, 'YYYY-MM-DD') + 1
+        </if>
+      </if>
+    </where>
+    ORDER BY CREATE_DATE_TIME DESC
+  </select>
+
+</mapper>

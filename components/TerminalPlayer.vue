@@ -175,6 +175,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  max-height: 30rem;
 }
 
 .tp-wrap--has-content {
@@ -245,6 +246,19 @@ onUnmounted(() => {
   overflow-y: auto;
   flex: 1;
   min-height: 0;
+}
+.tp-body::-webkit-scrollbar {
+  width: 6px;
+}
+.tp-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tp-body::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.3);
+  border-radius: 3px;
+}
+.tp-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(148,163,184,0.5);
 }
 
 .tp-line {

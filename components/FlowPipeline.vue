@@ -22,8 +22,8 @@
       <div class="fp-bridge-line" :class="{ 'fp-bridge--on': isRevealed(topRow.length - 1) }"></div>
       <div class="fp-bridge-arrow" :class="{ 'fp-arrow--on': isRevealed(topRow.length - 1) }">↓</div>
     </div>
-    <!-- 下排：步骤 6~10（反向，形成 U 型流） -->
-    <div class="fp-row fp-row--reverse">
+    <!-- 下排：步骤 10~6（正向 flex，数组已 reverse，形成 U 型回流，箭头指向左=流向下一个） -->
+    <div class="fp-row">
       <template v-for="(step, i) in bottomRow" :key="'b'+i">
         <div
           class="fp-node"
@@ -36,7 +36,7 @@
             <div v-if="isRevealed(bottomOrigIdx(i))" class="fp-prod">{{ step.product }}</div>
           </div>
         </div>
-        <div v-if="i < bottomRow.length - 1" class="fp-arrow fp-arrow--left" :class="{ 'fp-arrow--on': isRevealed(bottomOrigIdx(i)) }">←</div>
+        <div v-if="i < bottomRow.length - 1" class="fp-arrow" :class="{ 'fp-arrow--on': isRevealed(bottomOrigIdx(i)) }">←</div>
       </template>
     </div>
   </div>
@@ -110,10 +110,6 @@ function stepStateClass(index) {
   justify-content: center;
   gap: 4px;
   flex-wrap: nowrap;
-}
-
-.fp-row--reverse {
-  flex-direction: row-reverse;
 }
 
 .fp-bridge {

@@ -19,7 +19,7 @@ layout: default
     <div class="text-slate-600 text-sm font-bold">→</div>
     <div class="big-number text-green-400" style="font-size:1.6rem">85%</div>
   </div>
-  <div class="text-slate-500 text-[9.5px] mt-1">规模化裸用 → 体系化接入</div>
+  <div class="text-slate-500 text-[9.5px] mt-1">规模化裸用 → 体系化接入<br><span class="text-slate-600 text-[8.5px]">（工程经验估算）</span></div>
 </div>
 
 <div class="panel-soft-cyan flex flex-col items-center justify-center text-center !p-2.5">

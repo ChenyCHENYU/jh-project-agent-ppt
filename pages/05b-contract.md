@@ -53,7 +53,7 @@ clicks: 5
 </div>
 
 <SourceTrace :items="[
-  { file: 'demo/produce/aiflow/mmwr-customer-archive/api.md', lines: '1-31', desc: '真实样例：客户档案契约（POST /sale/customerArchive/list + dict 字段）' },
+  { file: 'demo/demo/produce/aiflow/mmwr-customer-archive/api.md', lines: '1-70', desc: '真实样例：客户档案契约（POST /sale/customerArchive/list + dict 字段）' },
   { file: 'wl-skills-kit/skills/core/api-contract/SKILL.md', lines: '触发词: 接口约定/api.md', desc: '前端 api-contract 生成 api.md' },
   { file: 'wl-skills-bd/skills/_pipeline.md', lines: '28-40', desc: '后端 api-design-be 消费前端 api.md（input_from）' },
   { file: 'wl-skills-design/standards/08-glossary.md', lines: '10,13-14', desc: '术语词典=字段对齐中央锚点' },

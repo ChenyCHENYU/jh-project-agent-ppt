@@ -32,8 +32,7 @@ export const installFrames = [
   { type: 'ok',  text: '📦 步骤 2/5 — AI Skills（11 个）' },
   { type: 'ok',  text: '  ✓ core/prototype-scan/SKILL.md         原型解析 → page-spec' },
   { type: 'ok',  text: '  ✓ core/api-contract/SKILL.md           接口约定 → api.md' },
-  { type: 'ok',  text: '  ✓ core/page-codegen/SKILL.md           页面代码生成' },
-  { type: 'ok',  text: '  ✓ core/validate-page/SKILL.md          产出校验' },
+  { type: 'ok',  text: '  ✓ core/page-codegen/SKILL.md           页面代码生成（内置自检）' },
   { type: 'ok',  text: '  ✓ core/convention-audit/SKILL.md       14条规范审计' },
   { type: 'ok',  text: '  ✓ core/business-doc-extract/SKILL.md   业务文档提取' },
   { type: 'ok',  text: '  ✓ core/template-extract/SKILL.md       组件提取建议' },
@@ -223,59 +222,65 @@ export const syncFrames = [
   { type: 'ok',  text: '──────────────────────────────────────────────' },
 ]
 
-// ── 代码示例：page-codegen 真实产物 ──
+// ── 代码示例：page-codegen 真实产物（取自 demo/produce/aiflow/mmwr-customer-archive/）──
 export const codeVue = `<template>
-  <div class="page-container">
-    <BaseQuery :query-def="queryDef" />
-    <BaseToolbar :toolbar-def="toolbarDef" />
-    <BaseTable
-      :columns="columns"
-      :data-source="tableData"
-      :loading="loading"
-      row-key="id"
-      cid="MMWR_CUST_ARCHIVE"
-    />
-    <jh-pagination v-model:current="current" v-model:size="size" :total="total" />
+  <div class="app-container app-page-container">
+    <BaseQuery :form="queryParam" :items="queryItems"
+      @select="select" @reset="select" />
+    <BaseToolbar :items="toolbars" />
+    <BaseTable ref="tableRef" :data="list"
+      :columns="mgmtCols" showToolbar />
+    <jh-pagination :total="page.total || 0"
+      v-model:currentPage="page.current"
+      v-model:pageSize="page.size"
+      @current-change="select" @size-change="select" />
+    <c_formModal ref="editModalRef" v-bind="modalConfig" @ok="select" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { usePageQuery } from '@/hooks/usePageQuery'
-import { createPage } from './data'
-const page = createPage()
-const { queryDef, toolbarDef, columns } = page.useDefs()
-const { tableData, loading, current, size, total } = usePageQuery(
-  page.apiConfig.list
-)
+import { createPage, modalConfig, managementColumns } from "./data";
+import c_formModal from "@/components/local/c_formModal/index.vue";
+
+const editModalRef = ref();
+const Page = createPage(editModalRef);
+const { tableRef, page, queryParam, list, queryItems, toolbars, select } = Page;
+const mgmtCols = managementColumns();
+onMounted(() => select());
 </script>`
 
-export const codeData = `import { AbstractPageQueryHook, TableColumnDesc } from '@jhlc/common-core'
+export const codeData = `import { AbstractPageQueryHook, TableColumnDesc } from "@/types/page";
+import { h, resolveComponent } from "vue";
+
+const STATUS_TAG_MAP = {
+  enableStatus: { 已启用: "success", 已停用: "danger" }
+};
+function renderStatusTag(row, field) {
+  const type = STATUS_TAG_MAP[field]?.[row[field]];
+  return type === undefined ? row[field]
+    : h(resolveComponent("ElTag"), { type }, () => row[field]);
+}
 
 export const API_CONFIG = {
-  list: '/mmwr/customerArchive/list',
-  remove: '/mmwr/customerArchive/remove',
-  save: '/mmwr/customerArchive/save',
-  update: '/mmwr/customerArchive/update',
-  getById: '/mmwr/customerArchive/getById',
-} as const
+  list:   "/sale/customerArchive/list",
+  remove: "/sale/customerArchive/remove",
+  save:   "/sale/customerArchive/save",
+  update: "/sale/customerArchive/update",
+} as const;
 
-export function createPage() {
-  return new (class extends AbstractPageQueryHook {
-    columnDef(): TableColumnDesc[] {
-      return [
-        { key: 'customerName', title: '客户名称', width: 180,
-          cid: 'CUST_001' },
-        { key: 'customerType', title: '客户类型', width: 120,
-          cid: 'CUST_002', dictCode: 'customer_type' },
-        { key: 'creditCode', title: '信用代码', width: 200,
-          cid: 'CUST_003' },
-        { key: 'enableStatus', title: '启用状态', width: 100,
-          cid: 'CUST_004', dictCode: 'enable_status' },
-        { key: 'createTime', title: '创建时间', width: 170,
-          cid: 'CUST_005' },
-      ]
-    }
-  })()
+export function managementColumns(): TableColumnDesc[] {
+  return [
+    { type: "selection" },
+    { type: "index" },
+    { label: "客户编码", name: "customerCode", minWidth: 120 },
+    { label: "客户名称", name: "customerName", minWidth: 189 },
+    { label: "客户类型", name: "customerType", minWidth: 105 },
+    { label: "启用状态", name: "enableStatus", fixed: "right",
+      defaultSlot: ({ row }) => renderStatusTag(row, "enableStatus") },
+    { label: "操作", width: 100, fixed: "right",
+      operations: [{ name: "edit", label: "编辑",
+        onClick: (row) => _editModalRef?.value?.edit(row.id) }] },
+  ];
 }`
 
 // ── 代码对比 ──

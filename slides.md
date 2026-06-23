@@ -239,6 +239,10 @@ src: ./pages/06.5-demo.md
 ---
 
 ---
+src: ./pages/06.6-e2e-demo.md
+---
+
+---
 src: ./pages/09-metrics.md
 ---
 
